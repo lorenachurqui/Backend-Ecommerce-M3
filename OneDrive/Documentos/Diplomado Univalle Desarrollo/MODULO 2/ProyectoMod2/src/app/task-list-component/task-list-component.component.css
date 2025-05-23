@@ -1,0 +1,27 @@
+.component-container {
+  width: 100%; 
+  max-width: 800px; 
+  margin: 0 auto; 
+}
+
+.completed {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.error-border {
+  border: 2px solid red;
+  background-color: #ffe5e5;
+}
+
+.disabled-button {
+  background-color: rgb(165, 162, 162);
+  cursor: not-allowed;
+}
+

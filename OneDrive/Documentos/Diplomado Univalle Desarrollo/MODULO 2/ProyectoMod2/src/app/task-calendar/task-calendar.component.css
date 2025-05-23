@@ -1,0 +1,22 @@
+.task-item {
+  display: flex; /* 🔥 Alinea el contenido en una fila */
+  justify-content: space-between; /* 🔥 Espaciado uniforme */
+  align-items: center; /* 🔥 Centra verticalmente */
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.task-details {
+  flex-grow: 1; /* 🔥 Permite que el texto ocupe el espacio restante */
+}
+
+button {
+  padding: 8px;
+  background: #1a5492;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+

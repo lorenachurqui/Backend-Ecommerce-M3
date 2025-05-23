@@ -1,0 +1,111 @@
+<form #taskForm="ngForm" (ngSubmit)="addTask(taskForm)" class="task-form">
+  <h3>Agregar Nueva Tarea</h3>
+  
+  <div class="input-container">
+
+    <!-- Titulo de tarea -->     
+    <div class="input-container">
+      <label for="title">Título:</label>
+      <input 
+      type="text" 
+      name="title" 
+      [(ngModel)]="newTaskTitle" 
+      #titleInput="ngModel" 
+      required minlength="3"
+      placeholder="Titulo de la tarea"
+      [class.error-border]="titleInput.invalid && titleInput.touched"
+      />
+    </div>
+
+    <!-- Descripcion -->
+    <div class="input-container">
+      <label for="title">Detalle:</label>
+      <textarea 
+      name="description" 
+      [(ngModel)]="newTaskDescription" 
+      #descriptionInput="ngModel" 
+      required minlength="10"
+      placeholder="Descripción de la tarea"
+      [class.error-border]="descriptionInput.invalid && descriptionInput.touched"
+      ></textarea>
+    </div>
+    
+    <!-- Categoria -->
+     <div class="input-container">
+      <label for="category">Categoría:</label>
+      <select name="category" [(ngModel)]="newTaskCategory" #categoryInput="ngModel" required>
+        <option value="">Seleccione una categoría</option>
+        <option value="tarea">Tarea</option>
+        <option value="trabajo">Trabajo</option>
+        <option value="proyecto">Proyecto</option>
+      </select>
+    </div>
+
+    <!-- Prioridad -->
+     <div class="input-container">
+      <label for="priority">Prioridad:</label>
+      <select name="priority" [(ngModel)]="newTaskPriority" #priorityInput="ngModel" required>
+        <option value="">Seleccione una prioridad</option>
+        <option value="baja">Baja</option>
+        <option value="media">Media</option>
+        <option value="alta">Alta</option>
+      </select>
+    </div>
+    
+    <!-- Fecha de registro -->
+     <div class="input-container">
+      <label for="registrationDate">Fecha de registro:</label>
+      <input 
+      type="date" 
+      name="registrationDate" 
+      [(ngModel)]="newTaskRegistrationDate" 
+      readonly
+      />
+    </div> 
+
+    <!-- Fecha de vencimiento -->
+     <div class="input-container">
+      <label for="dueDate">Fecha de vencimiento:</label>
+      <input 
+      type="date" 
+      name="dueDate" 
+      [(ngModel)]="newTaskDueDate" 
+      #dueDateInput="ngModel" 
+      (click)="clearReminderDate()"
+      required
+      [class.error-border]="dueDateInput.invalid && dueDateInput.touched"
+      />
+    </div>
+    
+    <br>
+     <!-- Fecha de recordatorio -->
+    <div class="input-container">
+      <label for="reminderDate">Fecha de recordatorio:</label>
+      <input 
+      type="date" 
+      name="reminderDate" 
+      [(ngModel)]="newTaskReminderDate"
+      #reminderDateInput="ngModel"
+      [max]="newTaskDueDate" 
+      (change)="validateReminderDate()"
+      required
+      />
+    </div>
+    
+    <button type="submit" [disabled]="taskForm.invalid">➕ Agregar</button>
+  </div>
+
+  <div class="error-messages">
+    <p *ngIf="titleInput.errors?.['required'] && titleInput.touched" class="error">⚠️ Título, es obligatorio.</p>
+    <p *ngIf="titleInput.errors?.['minlength'] && titleInput.touched" class="error">⚠️ Título, mínimo 3 caracteres.</p>
+
+    <p *ngIf="descriptionInput.errors?.['required'] && descriptionInput.touched" class="error">⚠️ Descripción, es obligatoria.</p>
+    <p *ngIf="descriptionInput.errors?.['minlength'] && descriptionInput.touched" class="error">⚠️ Descripción, mínimo 10 caracteres.</p>
+    
+    <p *ngIf="reminderDateInput.errors?.['required'] && reminderDateInput.touched" class="error">⚠️ Fecha recordatorio, debe seleccionar.</p>
+
+    <p *ngIf="categoryInput.errors?.['required'] && categoryInput.touched" class="error">⚠️ Categoría, debe seleccionar.</p>
+    <p *ngIf="priorityInput.errors?.['required'] && priorityInput.touched" class="error">⚠️ Prioridad, debe seleccionar.</p>
+    <p *ngIf="dueDateInput.errors?.['required'] && dueDateInput.touched" class="error">⚠️ Fecha Vencimiento, debe seleccionar.</p>
+   </div>
+</form> 

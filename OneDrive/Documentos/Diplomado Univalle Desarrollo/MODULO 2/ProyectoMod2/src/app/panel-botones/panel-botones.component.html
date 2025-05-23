@@ -1,0 +1,11 @@
+<div class="panel-botones">
+  <componente-boton-completada 
+    etiqueta="✔ Completadas: {{ contadorCompletadas }}" 
+    (clicked)="actualizarCompletadas($event)">
+  </componente-boton-completada>
+
+  <componente-boton-pendiente 
+    etiqueta="⏳ Pendientes: {{ contadorPendientes }}" 
+    (clicked)="actualizarPendientes($event)">
+  </componente-boton-pendiente>
+</div>
