@@ -1,0 +1,28 @@
+{
+  "name": "ecommerce-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "**Proyecto educativo**: Este repositorio contiene el backend de una aplicación de comercio electrónico, desarrollado con Node.js y Express. Está diseñado con fines educativos para comprender la estructura y funcionamiento de una API RESTful en un entorno de comercio electrónico.",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.16.0",
+    "mysql2": "^3.14.1",
+    "nodemon": "^3.1.10"
+  },
+  "devDependencies": {
+    "eslint": "^9.27.0",
+    "eslint-plugin-prettier": "^5.4.0",
+    "prettier": "^3.5.3"
+  }
+}
