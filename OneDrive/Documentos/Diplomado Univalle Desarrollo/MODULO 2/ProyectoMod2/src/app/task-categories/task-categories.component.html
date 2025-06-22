@@ -1,0 +1,23 @@
+<form #categoryForm="ngForm" (ngSubmit)="addCategory(categoryForm)" class="task-categories-form">
+  <h3>Agregar nueva Categoría</h3>
+
+  <div class="input-container">
+    <label for="categoryName">Nombre de Categoría:</label>
+    <input 
+    type="text" 
+    name="categoryName" 
+    [(ngModel)]="newCategoryName" 
+    required placeholder="Ej: Trabajo, Estudio..."
+    />
+
+
+  <button type="submit" [disabled]="categoryForm.invalid">➕ Agregar Categoría</button>
+    </div>
+</form>
+
+<ul>
+  <li *ngFor="let category of categories">
+    📌 {{ category.name }}
+    <button (click)="deleteCategory(category.id)">❌ Eliminar</button>
+  </li>
+</ul>

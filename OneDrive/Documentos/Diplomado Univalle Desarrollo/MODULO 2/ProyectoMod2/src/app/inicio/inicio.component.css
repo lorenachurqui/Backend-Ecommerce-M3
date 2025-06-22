@@ -1,0 +1,5 @@
+.component-container {
+  width: 100%; /* 🔥 Mantiene el mismo ancho */
+  max-width: 800px; /* 🔥 Define un tamaño máximo para que no se desborde */
+  margin: 0 auto; /* 🔥 Centra el contenido */
+}

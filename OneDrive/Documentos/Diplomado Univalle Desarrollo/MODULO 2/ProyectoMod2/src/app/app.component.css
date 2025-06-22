@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #dadfe6;
+  padding: 20px;
+}
+
+.content {
+  width: calc(100% - 250px); /* 🔥 Ajusta el ancho según el menú */
+  padding: 20px;
+}
+
+.right-side {
+  flex: 2;
+  padding: 20px;
+  display: flex;
+  justify-content: center; /* 🔥 Centra los componentes */
+  align-items: center;
+  width: 80%; /* 🔥 Mantiene un ancho uniforme */
+  margin: 0 auto;
+}
+

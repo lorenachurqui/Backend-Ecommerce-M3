@@ -1,0 +1,15 @@
+<div class="task-calendar">
+  <h3>Calendario de Tareas</h3>
+
+  <label>Seleccionar Fecha:</label>
+  <input type="date" [(ngModel)]="selectedDate" (change)="filterByDate()" />
+
+  <ul>
+    <li *ngFor="let task of filteredTasks" class="task-item">
+      <div class="task-details">
+        <strong>{{ task.title }}</strong> - {{ task.dueDate }}
+      </div>
+      <button (click)="viewDetails(task.id)">🔍 Ver Detalles</button>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,33 @@
+<div class="progress-report">
+  <h2>Reporte de Progreso</h2>
+  <div class="input-container">
+    <!-- Barra de progreso -->
+  <progress [value]="completedTasks" [max]="totalTasks"></progress>
+  <p>{{ completedTasks }} de {{ totalTasks }} tareas completadas ({{ progressPercentage }}%)</p>
+
+  <!-- Tabla de Reporte -->
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Tarea</th>
+        <th>Responsable</th>
+        <th>Estado</th>
+        <th>Fecha Límite</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of tasks">
+        <td>{{ task.id }}</td>
+        <td>{{ task.title }}</td>
+        <td>{{ task.responsible }}</td>
+        <td [class.completed]="task.completed">
+          {{ task.completed ? '✔️ Completado' : '⌛ En progreso' }}
+        </td>
+        <td>{{ task.deadline }}</td>
+      </tr>
+    </tbody>
+  </table>  
+  </div>
+
+</div>

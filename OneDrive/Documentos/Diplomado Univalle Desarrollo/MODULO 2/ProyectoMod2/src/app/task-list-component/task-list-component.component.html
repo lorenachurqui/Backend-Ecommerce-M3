@@ -1,0 +1,42 @@
+<div class="task-container">
+  <h2>Lista de Tareas  ({{ currentPage }} de {{ totalPages }})</h2>
+
+  <button (click)="loadTasksFromAPI()">Mostrar tareas API</button> <!-- Nuevo botón para cargar la API -->
+
+  <form (ngSubmit)="addTask(taskInput.value); taskInput.value=''">
+    <input 
+      type="text" 
+      #taskInput 
+      placeholder="Nueva tarea" 
+      required 
+      minlength="3" 
+      (input)="validateInput(taskInput.value)" 
+      [class.error-border]="taskInput.value.length > 0 && taskInput.value.length < 3"
+    />
+    <button 
+      (click)="addTask(taskInput.value)" 
+      [disabled]="isInvalid" 
+      [class.disabled-button]="isInvalid">
+      Agregar Tarea
+    </button>
+  
+    <p *ngIf="taskInput.value.length > 0 && taskInput.value.length < 3" class="error">
+      La tarea debe tener al menos 3 caracteres.
+    </p>
+  </form>
+
+  <div class="pagination">
+    <button (click)="changePage(-1)" [disabled]="currentPage === 1">⬅️ Anterior</button>
+    <span>Página {{ currentPage }} de {{ totalPages }}</span>
+    <button (click)="changePage(1)" [disabled]="currentPage === totalPages">➡️ Siguiente</button>
+  </div>
+  
+  <div *ngFor="let task of tasks; trackBy: trackTask">
+    <app-task-item 
+    [task]="task"
+    (toggleCompleted)="onToggleCompleted($event)"
+    (deleteTask)="onDeleteTask($event)">
+    </app-task-item>
+  </div>
+  <p *ngIf="tasks.length === 0" class="error">No hay tareas todavía.</p>
+</div>

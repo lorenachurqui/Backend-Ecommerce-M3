@@ -1,0 +1,26 @@
+<form #assignForm="ngForm" (ngSubmit)="assignTask()" class="task-assignments-form">
+  <h2>Asignación de Responsables</h2>
+
+  <div class="input-container">
+    <label for="taskSelect">Seleccionar Tarea:</label>
+    <select name="taskSelect" [(ngModel)]="selectedTask" required>
+      <option *ngFor="let task of tasks" [value]="task.id">{{ task.title }}</option>
+    </select>
+  </div>
+
+  <div class="input-container">
+    <label for="userSelect">Seleccionar Responsable:</label>
+    <select name="userSelect" [(ngModel)]="selectedUser" required>
+      <option *ngFor="let user of users" [value]="user.id">{{ user.name }}</option>
+    </select>
+  </div>
+
+  <button type="submit" [disabled]="assignForm.invalid">✅ Asignar Tarea</button>
+</form>
+
+<ul class="assignments-grid">
+  <li *ngFor="let assignment of assignments" class="assignment-item">
+    <span class="task-title">📌{{ assignment.taskTitle }}</span>
+    <span class="task-responsible">→ {{ assignment.userName }}</span>
+  </li>
+</ul>

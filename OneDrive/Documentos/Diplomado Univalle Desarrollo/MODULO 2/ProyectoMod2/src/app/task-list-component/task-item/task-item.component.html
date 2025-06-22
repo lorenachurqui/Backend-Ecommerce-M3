@@ -1,0 +1,15 @@
+<div class="task-item">
+  <label class="checkbox-container">
+    <input type="checkbox" [checked]="task.completed" (change)="onToggleCompleted()" />
+    <span class="checkmark"></span>
+  </label>
+
+  <input type="text" [(ngModel)]="task.title" *ngIf="isEditing" />
+  <span class="task-title" [class.completed]="task.completed" *ngIf="!isEditing">
+    {{ task.title }}
+  </span>
+
+  <button class="edit-button" (click)="toggleEdit()">{{ isEditing ? 'Guardar' : '✏️' }}</button>
+  <button class="delete-button" (click)="onDelete()">✖️</button>
+  <a class="details-button" [routerLink]="['/tasks', task.id]">Ver detalles</a>
+</div>
