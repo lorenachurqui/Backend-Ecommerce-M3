@@ -9,24 +9,30 @@ class SignUp {
   }
 
   /**
-   * @param {{ username: string, password: string }} input
+   * @param {{ username: string, password: string, roles?: string[] }} input
    * @returns {Promise<{ id: string, username: string, roles: string[] }>}
    */
-  async execute({ username, password }) {
+  async execute({ username, password, roles }) {
     // 1. Verificar unicidad
     const existing = await this.userRepository.findByUsername(username);
     if (existing) {
       throw new Error('Username already taken');
     }
+
     // 2. Hashear contraseña
     const hashed = await this.passwordHasher.hash(password);
+   
     // 3. Crear en repositorio
     const created = await this.userRepository.create({
       username,
-      password: hashed
+      password: hashed,
+      roles: roles && roles.length ? roles : ['user']
     });
     // 4. Devolver DTO
-    return { id: created._id.toString(), username: created.username, roles: created.roles };
+    return { 
+      id: created._id.toString(), 
+      username: created.username, 
+      roles: created.roles };
   }
 }
 

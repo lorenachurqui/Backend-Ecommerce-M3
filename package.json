@@ -26,5 +26,13 @@
     "eslint": "^9.27.0",
     "eslint-plugin-prettier": "^5.4.0",
     "prettier": "^3.5.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lorenachurqui/Backend-Ecommerce-M3.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lorenachurqui/Backend-Ecommerce-M3/issues"
+  },
+  "homepage": "https://github.com/lorenachurqui/Backend-Ecommerce-M3#readme"
 }
